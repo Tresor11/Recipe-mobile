@@ -9,6 +9,9 @@ export default function Nav() {
         <Text style={styles.navText}>See what others {"\n"} Are making</Text>
         <MenuIcon />
       </View>
+      <View>
+        <TextInput style={styles.input} placeholder="Search for a recipe" />
+      </View>
     </View>
   );
 }
@@ -30,5 +33,14 @@ const styles = StyleSheet.create({
   navText: {
     fontSize: 25,
     fontWeight: 'bold',
-  }
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    borderColor: '#f0f0f0',
+    padding: 10,
+    borderRadius: 50,
+    backgroundColor: '#f0f0f0',
+  },
 });
