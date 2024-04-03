@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image,Pressable } from 'react-native';
 
-export default function Item({name, image, description}) {
+export default function CategoryPreview({name, image, description, navigation}) {
   return (
     <View style={styles.item}>
+      <Pressable onPress={() => navigation.navigate('Category', {name: name})}>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={image}/>
       </View>
@@ -11,6 +12,7 @@ export default function Item({name, image, description}) {
         <Text style={{fontWeight: "bold", fontSize: 16}}>{name}</Text>
         <Text style={{fontWeight: "bold",color: "#A8A8A8", marginTop: 5}}>{Math.floor(Math.random() * 100) + 1} recipes</Text>
       </View>
+      </Pressable>
     </View>
   );
 }
