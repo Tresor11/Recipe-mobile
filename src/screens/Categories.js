@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import Item from './Item';
+import Item from '../components/CategoryPreview';
 
-export default function Menu() {
+export default function Categories({navigation}) {
   const [menu, setMenu] = useState([]);
-  // let menu = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
   useEffect(() => {
     async function getMenu() {
         const menu = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
@@ -23,12 +22,15 @@ export default function Menu() {
       <ScrollView>
         <View style={styles.container}>
           {menu.map((item) => {
-            return <Item
-            name={item.strCategory}
-            image={{uri: item.strCategoryThumb}}
-            description={item.strCategoryDescription}
-            key={item.idCategory}
+            return(
+              <Item
+              name={item.strCategory}
+              image={{uri: item.strCategoryThumb}}
+              description={item.strCategoryDescription}
+              key={item.idCategory}
+              navigation={navigation}
              />
+            )
           })}
         </View>
       </ScrollView>
