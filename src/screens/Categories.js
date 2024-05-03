@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import Item from '../components/CategoryPreview';
+import CategoryPreview from '../components/CategoryPreview';
 
 export default function Categories({navigation}) {
   const [menu, setMenu] = useState([]);
@@ -23,7 +23,7 @@ export default function Categories({navigation}) {
         <View style={styles.container}>
           {menu.map((item) => {
             return(
-              <Item
+              <CategoryPreview
               name={item.strCategory}
               image={{uri: item.strCategoryThumb}}
               description={item.strCategoryDescription}

@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, ScrollView} from 'react-native';
 import React, { useState, useEffect } from 'react';
-import Item from '../components/Category';
+import Item from '../components/CategoryPreview';
 
 export default function Category({route, navigation}) {
-  const name = route.params.name;
+  const recipeId = route.params.recipeId;
   const [menu, setMenu] = useState([]);
   useEffect(() => {
     async function getMenu() {
-        const menu = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`);
+        const menu = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`);
         const menuJson = await menu.json();
-        setMenu(menuJson.meals);
+        setMenu([menuJson.meals]);
     }
     getMenu();
  }, [])
@@ -20,20 +20,7 @@ export default function Category({route, navigation}) {
   {
     return (
       <ScrollView>
-        <View style={styles.container}>
-          {menu.map((item) => {
-            return(
-              <Item
-              name={item.strMeal}
-              image={{uri: item.strMealThumb}}
-              description={item.strMealDescription}
-              key={item.idMeal}
-              recipeId={item.idMeal}
-              navigation={navigation}
-             />
-            )
-          })}
-        </View>
+        <Text>{route.params.recipeId}</Text>
       </ScrollView>
     );
   }
