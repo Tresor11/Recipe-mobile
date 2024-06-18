@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView} from 'react-native';
 import React, { useState, useEffect } from 'react';
-import Item from '../components/CategoryPreview';
+import Item from '../components/Category';
 
 export default function Category({route, navigation}) {
   const name = route.params.name;
@@ -28,6 +28,7 @@ export default function Category({route, navigation}) {
               image={{uri: item.strMealThumb}}
               description={item.strMealDescription}
               key={item.idMeal}
+              recipeId={item.idMeal}
               navigation={navigation}
              />
             )
