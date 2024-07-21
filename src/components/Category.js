@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image,Pressable } from 'react-native';
+import { formatName } from '../helper';
+
 
 export default function Category({name, image, description, navigation, recipeId}) {
   return (
@@ -9,7 +11,7 @@ export default function Category({name, image, description, navigation, recipeId
         <Image style={styles.image} source={image}/>
       </View>
       <View style={styles.descriptionContainer}>
-        <Text style={{fontWeight: "bold", fontSize: 16}}>{name}</Text>
+        <Text style={{fontWeight: "bold", fontSize: 16}}>{formatName(name)}</Text>
         <Text style={{fontWeight: "bold",color: "#A8A8A8", marginTop: 5}}>{Math.floor(Math.random() * 100) + 1} recipes</Text>
       </View>
       </Pressable>
